@@ -19,6 +19,16 @@ module.exports.profile = async (req, res) => {
 }
 
 
+module.exports.update = async (req, res) => {
+    if(req.user.id == req.params.id) {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body);
+    return res.redirect('back');
+    } else {
+        return res.status(401).send('Unautherised');
+    }
+}
+
+
 module.exports.signin = (req, res) => {
     if (req.isAuthenticated()) {
         return res.redirect('/users/profile');
