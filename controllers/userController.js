@@ -9,9 +9,10 @@ module.exports.signup = (req, res) => {
 }
 
 module.exports.profile = async (req, res) => {
-
+    const user = await User.findById(req.params.id);
     return res.render('user_profile', {
         title: 'User Profile',
+        profile_user:user
 
     })
 
