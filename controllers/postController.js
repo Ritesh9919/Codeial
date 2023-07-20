@@ -13,7 +13,6 @@ module.exports.create = async (req, res) => {
 
 module.exports.destroy = async (req, res) => {
    const post = await Post.findById(req.params.id);
-   console.log(post);
    if(post.user == req.user.id) {
       post.remove();
       await Comment.deleteMany({post:req.params.id});
