@@ -9,23 +9,31 @@ module.exports.signup = (req, res) => {
 }
 
 module.exports.profile = async (req, res) => {
+    try{
     const user = await User.findById(req.params.id);
     return res.render('user_profile', {
         title: 'User Profile',
         profile_user:user
 
     })
+} catch(err) {
+    console.log('Error', err);
+}
 
 }
 
 
 module.exports.update = async (req, res) => {
+    try{
     if(req.user.id == req.params.id) {
     const user = await User.findByIdAndUpdate(req.params.id, req.body);
     return res.redirect('back');
     } else {
         return res.status(401).send('Unautherised');
     }
+} catch(err) {
+    console.log('Error', err);
+}
 }
 
 
@@ -38,6 +46,7 @@ module.exports.signin = (req, res) => {
 
 
 module.exports.create = async (req, res) => {
+    try{
     if (req.body.password != req.body.confirm_password) {
         return res.redirect('back');
     }
@@ -53,6 +62,9 @@ module.exports.create = async (req, res) => {
     } else {
         return res.redirect('back');
     }
+} catch(err) {
+    console.log('Error', err);
+}
 
 
 
@@ -61,6 +73,7 @@ module.exports.create = async (req, res) => {
 }
 
 module.exports.createSession = (req, res) => {
+    req.flash('success', 'Logged In Successfully');
     return res.redirect('/');
 }
 
@@ -69,6 +82,7 @@ module.exports.destroySession = (req, res, next) => {
         if (err) {
             return next(err);
         }
+        req.flash('success', 'You have Logged Out!');
         return res.redirect('/');
     });
 
