@@ -10,7 +10,7 @@ const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const customMdware = require('./config/middleware');
-const port = 7000;
+const port = 8000;
 
 const app = express();
 
@@ -22,6 +22,7 @@ const app = express();
 app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(express.static('assets'));
+app.use('/uploads', express.static(__dirname +  '/uploads'));
 
 app.use(expressLayout);
 
