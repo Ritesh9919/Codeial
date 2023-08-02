@@ -20,3 +20,57 @@ body{
     padding:10px;
     border-left:2px solid gray;
 }
+
+.chat-container{
+    width:300px;
+    border:2px solid blue;
+    padding:20px;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+}
+
+.self-msg{
+    width:45%;
+    position: relative;
+    left:40%;
+    top:10px;
+    border:2px solid green;
+    padding:5px 10px;
+    background-color: cadetblue;
+    list-style: none;
+}
+
+.other-msg{
+    width:45%;
+    border:2px solid green;
+    padding:5px 10px;
+    background-color: chocolate;
+    list-style: none;
+}
+
+.form{
+
+    margin-top: 50px;
+}
+
+.form .input {
+    padding:10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 0 black;
+    color:black;
+    
+}
+
+.form .submit{
+    padding:10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 0 black;
+  font-weight: bold;
+  color:white;
+  background-color: green;
+}

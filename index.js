@@ -17,7 +17,10 @@ const port = 8000;
 const app = express();
 
 
-
+const chatServer = require('http').Server(app);
+const chatSocket = require('./config/chat_socket').chatSockets(chatServer);
+chatServer.listen(500);
+console.log('chat server is litening on port 5000');
 
 // middleware
 

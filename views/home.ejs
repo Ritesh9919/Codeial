@@ -34,4 +34,21 @@
 
 </section>
 </div>
+
+<section id="chatting-engine">
+    <div class="chat-container">
+        <ul>
+            <li class="other-msg">Other Message</li>
+            <li class="self-msg">Self Message</li>
+        </ul>
+        
+       <form  class="form" action="" method="POST">
+       <input class="input" type="text" name="message" placeholder="Enter here..." required/>
+       <input class="submit" type="submit" value="Send"/>
+       </form>
+   </div>
+</section>
+
 <script src="js/home_post.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.1/socket.io.js"></script>
+<script src="js/chat_engine.js"></script>
