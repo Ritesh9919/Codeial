@@ -12,6 +12,7 @@ const passportGoogle = require('./config/passport_google_oauth2_strategy');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const customMdware = require('./config/middleware');
+const env = require('./config/envirement');
 const port = 8000;
 
 const app = express();
@@ -26,7 +27,7 @@ console.log('chat server is litening on port 5000');
 
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(express.static('assets'));
+app.use(express.static(env.asset_path));
 app.use('/uploads', express.static(__dirname +  '/uploads'));
 
 app.use(expressLayout);
@@ -47,7 +48,7 @@ app.set('views', './views');
 // mongo store uses to store the session cookie in db
 app.use(session({
     name:'codeial',
-    secret:'blahsomething',
+    secret:env.session_cookie_key,
     saveUninitialized:false,
     resave:false,
     cookie:{
@@ -67,6 +68,10 @@ app.use(customMdware.setFlash);
 
 app.use('/', require('./routes'));
 
+
+
 app.listen(port, ()=> {
     console.log("Server is running on port:", port);
 })
+
+
